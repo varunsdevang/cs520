@@ -1,26 +1,20 @@
 package controller;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JTextArea;
-import javax.swing.JPanel;
-import java.awt.*;
-import java.awt.event.*;
-
 import model.RowGameModel;
 import model.Player;
-import view.RowGameGUI;
+import view.RowGameView;
 
 public class RowGameController {
     public RowGameModel gameModel;
-    public RowGameGUI gameView;
+    public RowGameView gameView;
 
     /**
      * Creates a new game initializing the GUI.
      */
     public RowGameController() {
 	gameModel = new RowGameModel();
-	gameView = new RowGameGUI(this);
+	gameView = new RowGameView(this);
 
         for(int row = 0; row<3; row++) {
             for(int column = 0; column<3 ;column++) {

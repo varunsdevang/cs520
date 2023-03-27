@@ -1,17 +1,23 @@
 package view;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import controller.RowGameController;
 import java.awt.*;
 import java.awt.event.*;
 import model.RowGameModel;
 
-public class GameBlocks implements View{
+public class GameBlocksView implements View {
     private JButton[][] blocks;
     public int blockSize;
     
-    public GameBlocks(int size, JPanel gamePanel, RowGameController controller) {
+    public GameBlocksView(int size , JFrame gui, RowGameController controller) {
+        JPanel gamePanel = new JPanel(new FlowLayout());
+        JPanel game = new JPanel(new GridLayout(3,3));
+        gamePanel.add(game, BorderLayout.CENTER);
+        gui.add(gamePanel, BorderLayout.NORTH);
+
         blockSize = size;
         blocks = new JButton[size][size];
         // Initialize a JButton for each cell of the 3x3 game board.
@@ -19,7 +25,7 @@ public class GameBlocks implements View{
             for(int column = 0; column<size;column++) {
                 blocks[row][column] = new JButton();
                 blocks[row][column].setPreferredSize(new Dimension(75,75));
-                gamePanel.add(blocks[row][column]);
+                game.add(blocks[row][column]);
                 blocks[row][column].addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
 			            controller.move((JButton)e.getSource());

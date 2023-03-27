@@ -4,16 +4,23 @@ import model.Player;
 import model.RowGameModel;
 import javax.swing.JTextArea;
 import javax.swing.JPanel;
+import javax.swing.JFrame;
+import java.awt.*;
 
 
-public class GameMessageUI implements View {
+
+public class GameMessageView implements View {
 
     private JTextArea message = new JTextArea();
 
-    public GameMessageUI(JPanel messagePanel){
+    public GameMessageView(JFrame gui){
+        JPanel messages = new JPanel(new FlowLayout());
+        messages.setBackground(Color.white);
+        gui.add(messages, BorderLayout.SOUTH);
+
         message.setText("Player 1 to play 'X'");
         message.setEditable(false);
-        messagePanel.add(message);
+        messages.add(message);
     }
 
     public void update(RowGameModel model){
