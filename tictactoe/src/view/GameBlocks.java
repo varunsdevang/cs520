@@ -7,7 +7,7 @@ import java.awt.*;
 import java.awt.event.*;
 import model.RowGameModel;
 
-public class GameBlocks {
+public class GameBlocks implements View{
     private JButton[][] blocks;
     public int blockSize;
     
