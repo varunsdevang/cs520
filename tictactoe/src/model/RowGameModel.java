@@ -15,8 +15,9 @@ public class RowGameModel
 
     public int movesLeft = 9;
 
-    private String finalResult = null;
+    private int[] lastMove = null;
 
+    private String finalResult = null;
 
     public RowGameModel() {
 	super();
@@ -42,5 +43,19 @@ public class RowGameModel
 
     public void setPlayer(Player player){
         this.player = player;
+    }
+
+    public int[] getLastMove() {
+        return this.lastMove;
+    }
+
+    public void setLastMove(int row, int column) {
+        this.lastMove = new int[2];
+        this.lastMove[0] = row;
+        this.lastMove[1] = column;
+    }
+
+    public void clearLastMove(){
+        this.lastMove = null;
     }
 }

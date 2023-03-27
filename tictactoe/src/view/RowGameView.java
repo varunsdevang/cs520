@@ -12,9 +12,8 @@ import controller.RowGameController;
 public class RowGameView implements View {
     public JFrame gui = new JFrame("Tic Tac Toe");
     public RowGameModel gameModel = new RowGameModel();
-    // public JButton[][] blocks = new JButton[3][3];
     public JButton reset = new JButton("Reset");
-    //public JTextArea playerturn = new JTextArea();
+    public JButton undo = new JButton("Undo");
     public GameBlocksView blocks;
     public GameMessageView messageUI;
 
@@ -30,10 +29,17 @@ public class RowGameView implements View {
 
         JPanel options = new JPanel(new FlowLayout());
         options.add(reset);
+        options.add(undo);
         gui.add(options, BorderLayout.CENTER);
         reset.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 controller.resetGame();
+            }
+        });
+
+        undo.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                controller.undo();
             }
         });
 
